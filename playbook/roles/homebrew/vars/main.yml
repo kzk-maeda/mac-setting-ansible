@@ -1,0 +1,33 @@
+taps:
+  - homebrew/cask
+  - homebrew/cask-versions
+  - homebrew/cask-fonts
+  - homebrew/core
+ 
+packages:
+  # - { name: zsh, state: present }
+  # - { name: git, state: present }
+  # - { name: wget, state: present }
+  # - { name: vim, state: present }
+  # - { name: tree, state: present }
+  # - { name: openssl, state: present }
+  # - { name: jq, state: present }
+  # - { name: tree, state: present }
+  # - { name: gh, state: present }
+  # - { name: awscli, state: present }
+  # - { name: kubernetes-cli, state: present }
+  # - { name: marp-cli, state: present }
+  # - { name: mecab, state: present }
+  # - { name: minikube, state: present }
+  # - { name: nodenv, state: present }
+  # - { name: numpy, state: present }
+  # - { name: openjdk, state: present }
+  # - { name: saml2aws, state: present }
+  # - { name: shellcheck, state: present }
+  # - { name: terraform, state: present }
+  # - { name: tfenv, state: present }
+  # - { name: tig, state: present }
+  # - { name: yarn, state: present }
+  # - { name: zplug, state: present }
+  # - { name: pyenv, state: present }
+  - { name: mas, state: present }

@@ -1,0 +1,11 @@
+- name: copy dotfiles
+  copy:
+    src: ../files/.zshrc
+    dest: ~/.zshrc
+    mode: 0755
+
+- name: copy motd
+  copy:
+    src: ../files/motd.txt
+    dest: ~/.motd/motd.txt
+    mode: 0755

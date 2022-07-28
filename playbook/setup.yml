@@ -1,0 +1,10 @@
+---
+- name: mac setup
+  hosts: localhost
+  become: no
+  gather_facts: no
+  roles:
+    - homebrew
+    - homebrew_cask
+    - app_store
+    - dotfiles
