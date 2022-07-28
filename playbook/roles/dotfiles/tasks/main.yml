@@ -9,3 +9,9 @@
     src: ../files/motd.txt
     dest: ~/.motd/motd.txt
     mode: 0755
+
+- name: copy gitconfig
+  copy:
+    src: ../files/.gitconfig
+    dest: ~/.gitconfig
+    mode: 0755

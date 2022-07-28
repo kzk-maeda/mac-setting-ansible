@@ -1,0 +1,19 @@
+- name: KeyRepeat
+  community.general.osx_defaults:
+    key: KeyRepeat
+    type: int
+    value: 1
+
+- name: AppleShowAllFiles
+  community.general.osx_defaults:
+    domain: com.apple.finder
+    key: AppleShowAllFiles
+    type: bool
+    value: TRUE
+
+- name: AppleShowAllExtensions
+  community.general.osx_defaults:
+    domain: NSGlobalDomain
+    key: AppleShowAllExtensions
+    type: bool
+    value: TRUE

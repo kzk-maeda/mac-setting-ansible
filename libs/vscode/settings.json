@@ -1,0 +1,58 @@
+{
+  "css.validate": false,
+  "less.validate": false,
+  "scss.validate": false,
+  "window.zoomLevel": -1,
+  "vim.useSystemClipboard": true,
+  "[json]": {
+      "editor.defaultFormatter": "vscode.json-language-features",
+      "editor.formatOnSave": true
+  },
+  "workbench.editorAssociations": {
+      "*.ipynb": "jupyter-notebook"
+  },
+  "editor.lineNumbers": "on",
+  "editor.tabSize": 2,
+  "editor.stickyTabStops": true,
+  "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true,
+      "source.fixAll.stylelint": true
+  },
+  "editor.formatOnSave": false,
+  "eslint.packageManager": "yarn",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+  "[graphql]": {
+      "editor.formatOnSave": true
+  },
+  "[javascript]": {
+      "editor.formatOnSave": true
+  },
+  "[javascriptreact]": {
+      "editor.formatOnSave": true
+  },
+  "[typescript]": {
+      "editor.formatOnSave": true
+  },
+  "[typescriptreact]": {
+      "editor.formatOnSave": true
+  },
+  "python.pythonPath": "~/anaconda3/bin/python",
+  "python.venvPath": "./venv",
+  "python.defaultInterpreterPath": "~/anaconda3/bin/python",
+  "notebook.cellToolbarLocation": {
+      "default": "right",
+      "jupyter-notebook": "left"
+  },
+  "yaml.schemas": {},
+  "vscode-pets.petSize": "large",
+  "vscode-pets.petType": "totoro",
+  "vscode-pets.position": "explorer",
+  "vscode-pets.theme": "forest",
+  "ruby.lint": { "rubocop": true },
+  "ruby.useLanguageServer": true,
+  "ruby.intellisense": "rubyLocate",
+  "bracket-pair-colorizer-2.depreciation-notice": false,
+  "editor.rename.enablePreview": false,
+  "workbench.editor.enablePreview": false,
+}
