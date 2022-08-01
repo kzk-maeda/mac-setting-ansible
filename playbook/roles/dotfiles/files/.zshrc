@@ -37,20 +37,12 @@ eval "$(nodenv init -)"
 export PATH=$PATH:`npm bin -g`
 
 # for go
-# export GOENV_ROOT=$HOME/.goenv
-# export PATH=$GOENV_ROOT/bin:$PATH
-# eval "$(goenv init -)"
-# GOENV_DISABLE_GOPATH=11
-# export PATH="$GOROOT/bin:$PATH"
-# export PATH="$PATH:$GOPATH/bin"
-# export PATH=$HOME/go/bin:/usr/local/go/bin:$PATH
-# export GOROOT=/usr/local/go
-export GOROOT=$(go1.18 env GOROOT)
-export PATH=${GOROOT}/bin:${PATH}
-export GOPATH=$HOME/go
+# export GOROOT=$(go1.18 env GOROOT)
+# export PATH=${GOROOT}/bin:${PATH}
+# export GOPATH=$HOME/go
 
 # for Java
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/amazon-corretto-8.jdk/Contents/Home
+# export JAVA_HOME=/Library/Java/JavaVirtualMachines/amazon-corretto-8.jdk/Contents/Home
 
 # GDAL
 export GDAL_LIBRARY_PATH=/usr/local/opt/gdal/lib/libgdal.31.dylib
@@ -64,8 +56,8 @@ autoload -U compinit
 compinit
 
 # ruby version
-eval "$(rbenv init -)"
-export PATH="$HOME/.rbenv/shims:$PATH"
+# eval "$(rbenv init -)"
+# export PATH="$HOME/.rbenv/shims:$PATH"
 
 # VCSの情報を取得するzsh関数
 autoload -Uz vcs_info
@@ -105,6 +97,9 @@ RPROMPT="%{%(?.$fg[green].$fg[red])%}% 乁( ˙ω˙ )厂 %{$reset_color%}"
 . ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # -------- zplug設定 ----------
+if [ -f ${HOME}/.zplug/init.zsh ]; then
+    source ${HOME}/.zplug/init.zsh
+fi
 # add plugin
 source /usr/local/opt/zplug/init.zsh
 zplug "mollifier/cd-gitroot" &>/dev/null 2>&1
