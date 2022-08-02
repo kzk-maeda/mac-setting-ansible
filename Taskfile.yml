@@ -4,5 +4,8 @@ tasks:
   check-syntax:
     - ansible-playbook --syntax-check playbook/setup.yml -i playbook/inventory
 
+  check:
+    - ansible-playbook playbook/setup.yml -i playbook/inventory
+
   apply:
     - ansible-playbook playbook/setup.yml -i playbook/inventory --ask-pass
