@@ -24,10 +24,11 @@ packages:
   - { name: openjdk, state: present }
   - { name: saml2aws, state: present }
   - { name: shellcheck, state: present }
-  - { name: terraform, state: present }
+  # - { name: terraform, state: present }
   - { name: tfenv, state: present }
   - { name: tig, state: present }
   - { name: yarn, state: present }
   - { name: zplug, state: present }
   - { name: pyenv, state: present }
   - { name: mas, state: present }
+  - { name: postgresql, state: present }

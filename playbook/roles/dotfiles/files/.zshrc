@@ -41,6 +41,12 @@ export PATH=$PATH:`npm bin -g`
 # export PATH=${GOROOT}/bin:${PATH}
 # export GOPATH=$HOME/go
 
+# BEGIN pyenv setting
+test -x /opt/homebrew/bin/pyenv && eval "$(/opt/homebrew/bin/pyenv init -)"
+
+# BEGIN nodenv setting
+test -x /opt/homebrew/bin/nodenv && eval "$(/opt/homebrew/bin/nodenv init -)"
+
 # for Java
 # export JAVA_HOME=/Library/Java/JavaVirtualMachines/amazon-corretto-8.jdk/Contents/Home
 

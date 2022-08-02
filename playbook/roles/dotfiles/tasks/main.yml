@@ -1,7 +1,13 @@
-- name: copy dotfiles
+- name: copy zshrc
   copy:
     src: ../files/.zshrc
     dest: ~/.zshrc
+    mode: 0755
+
+- name: copy zprofile
+  copy:
+    src: ../files/.zprofile
+    dest: ~/.zprofile
     mode: 0755
 
 - name: copy motd
