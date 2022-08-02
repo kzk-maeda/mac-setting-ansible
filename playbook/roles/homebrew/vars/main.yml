@@ -32,3 +32,4 @@ packages:
   - { name: pyenv, state: present }
   - { name: mas, state: present }
   - { name: postgresql, state: present }
+  - { name: findutils, state: present }
