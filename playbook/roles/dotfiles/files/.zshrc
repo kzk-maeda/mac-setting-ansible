@@ -65,6 +65,12 @@ compinit
 # eval "$(rbenv init -)"
 # export PATH="$HOME/.rbenv/shims:$PATH"
 
+# BEGIN homebrew setting
+if [ -d /opt/homebrew/bin ]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+  alias brew="PATH=/opt/homebrew/bin brew"
+fi
+
 # VCSの情報を取得するzsh関数
 autoload -Uz vcs_info
 autoload -Uz colors # black red green yellow blue magenta cyan white
