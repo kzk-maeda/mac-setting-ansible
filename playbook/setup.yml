@@ -4,7 +4,7 @@
   become: no
   gather_facts: no
   roles:
-    - homebrew
+    # - homebrew
     # - homebrew_cask
     # - app_store
     - dotfiles

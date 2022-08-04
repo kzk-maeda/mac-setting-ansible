@@ -10,7 +10,7 @@ alias gp="git pull -p"
 alias gc="git checkout"
 alias gcm="git commit -m"
 alias chrome="open -a '/Applications/Google Chrome.app'"
-alias saml="saml2aws login -a gsuite --skip-prompt --role='arn:aws:iam::1234567890:role/GSuiteAdmin'"
+alias saml="saml2aws login --skip-prompt"
 alias memo="code ~/work/memo/memo_`date "+%Y%m%d_%H%M%S"`.md"
 alias blog="${HOME}/work/self-project/blog/kzk-blog/bin/create_post.sh"
 
@@ -24,10 +24,10 @@ alias gip="curl inet-ip.info"
 # export PATH=$PATH:$ANDROID_HOME/platform-tools
 
 # for Anaconda
-export PATH=$HOME/anaconda3/bin:$PATH
+# export PATH=$HOME/anaconda3/bin:$PATH
 
 # for Rust
-export PATH=$HOME/.cargo/bin:$PATH
+# export PATH=$HOME/.cargo/bin:$PATH
 
 # for Node
 export PATH="$HOME/.nodenv/bin:$PATH"
@@ -41,7 +41,15 @@ export PATH=$PATH:`npm bin -g`
 # export PATH=${GOROOT}/bin:${PATH}
 # export GOPATH=$HOME/go
 
+# BEGIN homebrew setting
+if [ -d /opt/homebrew/bin ]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+  alias brew="PATH=/opt/homebrew/bin brew"
+fi
+
 # BEGIN pyenv setting
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
 test -x /opt/homebrew/bin/pyenv && eval "$(/opt/homebrew/bin/pyenv init -)"
 
 # BEGIN nodenv setting
@@ -65,11 +73,25 @@ compinit
 # eval "$(rbenv init -)"
 # export PATH="$HOME/.rbenv/shims:$PATH"
 
-# BEGIN homebrew setting
-if [ -d /opt/homebrew/bin ]; then
-  eval "$(/opt/homebrew/bin/brew shellenv)"
-  alias brew="PATH=/opt/homebrew/bin brew"
-fi
+# プロンプト（左）
+function left-prompt {
+  name_t='179m%}'      # user name text clolr
+  name_b='237m%}'    # user name background color
+  path_t='255m%}'     # path text clolr
+  path_b='031m%}'   # path background color
+  arrow='087m%}'   # arrow color
+  text_color='%{\e[38;5;'    # set text color
+  back_color='%{\e[30;48;5;' # set background color
+  reset='%{\e[0m%}'   # reset
+  sharp='\uE0B0'      # triangle
+  
+  user="${back_color}${name_b}${text_color}${name_t}"
+  dir="${back_color}${path_b}${text_color}${path_t}"
+
+  echo "${user}%D %* ${back_color}${path_b}${text_color}${name_b}${sharp} ${dir}%~${reset}${text_color}${path_b}${sharp}${reset}"
+}
+
+PROMPT=`left-prompt`
 
 # VCSの情報を取得するzsh関数
 autoload -Uz vcs_info
@@ -78,32 +100,18 @@ colors
 
 # PROMPT変数内で変数参照
 setopt prompt_subst
-
 zstyle ':vcs_info:git:*' check-for-changes true #formats 設定項目で %c,%u が使用可
 zstyle ':vcs_info:git:*' stagedstr "%F{green}!" #commit されていないファイルがある
 zstyle ':vcs_info:git:*' unstagedstr "%F{magenta}+" #add されていないファイルがある
 zstyle ':vcs_info:*' formats "%F{cyan}%c%u(%b)%f" #通常
 zstyle ':vcs_info:*' actionformats '[%b|%a]' #rebase 途中,merge コンフリクト等 formats 外の表示
 
-# %b ブランチ情報
-# %a アクション名(mergeなど)
-# %c changes
-# %u uncommit
-
-# プロンプト表示直前に vcs_info 呼び出し
 precmd () { vcs_info }
-
-# プロンプト（左）
-# PROMPT='%{$fg[green]%}[%n@%m]%{$reset_color%}'
-PROMPT='%{$fg[green]%}% %D %* %{$reset_color%}'
-PROMPT=$PROMPT'%{${fg[yellow]}%}%}%~ %{${reset_color}%} ${vcs_info_msg_0_} 
+PROMPT=$PROMPT'${vcs_info_msg_0_} 
 %{$reset_color%}%{${fg[yellow]}%}%}> '
 
 # プロンプト（右）
-# RPROMPT='%{${fg[red]}%}[%~]%{${reset_color}%}'
-# precmd () {
 RPROMPT="%{%(?.$fg[green].$fg[red])%}% 乁( ˙ω˙ )厂 %{$reset_color%}"
-# }
 
 # auto suggestion
 . ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
@@ -113,7 +121,7 @@ if [ -f ${HOME}/.zplug/init.zsh ]; then
     source ${HOME}/.zplug/init.zsh
 fi
 # add plugin
-source /usr/local/opt/zplug/init.zsh
+# source /usr/local/opt/zplug/init.zsh
 zplug "mollifier/cd-gitroot" &>/dev/null 2>&1
 zplug "b4b4r07/enhancd", use:init.sh &>/dev/null 2>&1
 zplug "zsh-users/zsh-history-substring-search", hook-build:"__zsh_version 4.3" &>/dev/null 2>&1
@@ -136,7 +144,7 @@ if ! zplug check --verbose; then
 fi
 
 # Then, source plugins and add commands to $PATH
-zplug load --verbose
+zplug load
 
 function select-history() {
   BUFFER=$(history -n -r 1 | fzf --no-sort +m --query "$LBUFFER" --prompt="History > ")
@@ -156,26 +164,10 @@ fbr() {
 
 # -----------------------------
 
-# env
-export PATH=${HOME}/Library/Python/3.7/bin/:~/.nodebrew/current/bin/:$PATH
-
 # motd
+echo "\n"
+echo "Current Log In : `date "+%Y/%m/%d %H:%M:%S"`"
 cat ~/.motd/motd.txt
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('${HOME}/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "${HOME}/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "${HOME}/anaconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="${HOME}/anaconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
 
 
 # The next line updates PATH for the Google Cloud SDK.
