@@ -34,3 +34,4 @@ packages:
   - { name: postgresql, state: present }
   - { name: findutils, state: present }
   - { name: volta, state: present }
+  - { name: fzf, state: present }
