@@ -3,6 +3,7 @@ taps:
   - homebrew/cask-versions
   - homebrew/cask-fonts
   - homebrew/core
+  - heroku/brew
  
 packages:
   # - { name: zsh, state: present }
@@ -24,7 +25,6 @@ packages:
   - { name: openjdk, state: present }
   - { name: saml2aws, state: present }
   - { name: shellcheck, state: present }
-  # - { name: terraform, state: present }
   - { name: tfenv, state: present }
   - { name: tig, state: present }
   - { name: yarn, state: present }
@@ -35,3 +35,4 @@ packages:
   - { name: findutils, state: present }
   - { name: volta, state: present }
   - { name: fzf, state: present }
+  - { name: heroku, state: present }
