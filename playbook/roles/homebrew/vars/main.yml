@@ -3,6 +3,7 @@ taps:
   - homebrew/cask-versions
   - homebrew/cask-fonts
   - homebrew/core
+  - aws/tap
   - heroku/brew
  
 packages:
@@ -36,3 +37,4 @@ packages:
   - { name: volta, state: present }
   - { name: fzf, state: present }
   - { name: heroku, state: present }
+  - { name: aws-sam-cli, state: present }

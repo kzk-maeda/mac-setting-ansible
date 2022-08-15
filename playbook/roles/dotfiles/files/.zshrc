@@ -14,6 +14,7 @@ alias saml="saml2aws login --skip-prompt"
 alias memo="code ~/work/memo/memo_`date "+%Y%m%d_%H%M%S"`.md"
 alias blog="${HOME}/work/self-project/blog/kzk-blog/bin/create_post.sh"
 alias run_local="osascript /Users/kazukimaeda/work/atamaplus/script/run_local_env.scpt"
+alias update_local="osascript /Users/kazukimaeda/work/atamaplus/script/update_local_env.scpt"
 
 # Get Global IP Address
 alias gip="curl inet-ip.info"
