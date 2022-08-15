@@ -5,6 +5,7 @@
   gather_facts: no
   roles:
     - homebrew
+    - npm
+    - dotfiles
     # - homebrew_cask
     # - app_store
-    - dotfiles
