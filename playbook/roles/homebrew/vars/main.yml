@@ -38,3 +38,8 @@ packages:
   - { name: fzf, state: present }
   - { name: heroku, state: present }
   - { name: aws-sam-cli, state: present }
+  - { name: git-secrets, state: present }
+  - { name: pre-commit, state: present }
+  - { name: tflint, state: present }
+  # - { name: vagrant, state: present }
+  - { name: alp, state: present }
