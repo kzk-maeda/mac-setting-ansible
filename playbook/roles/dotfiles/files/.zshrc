@@ -43,6 +43,9 @@ export PATH=$PATH:`npm bin -g`
 # export PATH=${GOROOT}/bin:${PATH}
 # export GOPATH=$HOME/go
 
+# for mysql
+export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
+
 # BEGIN homebrew setting
 if [ -d /opt/homebrew/bin ]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
