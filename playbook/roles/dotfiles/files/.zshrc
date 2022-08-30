@@ -175,15 +175,15 @@ echo "Current Log In : `date "+%Y/%m/%d %H:%M:%S"`"
 cat ~/.motd/motd.txt
 
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '${HOME}/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '${HOME}/Downloads/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '${HOME}/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '${HOME}/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
-
 # Added by serverless binary installer
 export PATH="$HOME/.serverless/bin:$PATH"
 yq() {
   docker run --rm -i -v "${PWD}":/workdir mikefarah/yq "$@"
 }
 
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/kazukimaeda/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/kazukimaeda/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/kazukimaeda/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/kazukimaeda/google-cloud-sdk/completion.zsh.inc'; fi

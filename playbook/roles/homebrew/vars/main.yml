@@ -44,3 +44,4 @@ packages:
   # - { name: vagrant, state: present }
   - { name: alp, state: present }
   - { name: mysql-client, state: present }
+  - { name: k6, state: present }
