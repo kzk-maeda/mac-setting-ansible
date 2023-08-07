@@ -10,7 +10,6 @@ alias gp="git pull -p"
 alias gc="git checkout"
 alias gcm="git commit -m"
 alias chrome="open -a '/Applications/Google Chrome.app'"
-alias saml="saml2aws login --skip-prompt"
 alias memo="code ~/work/memo/memo_`date "+%Y%m%d_%H%M%S"`.md"
 alias blog="${HOME}/work/self-project/blog/kzk-blog/bin/create_post.sh"
 alias run_local="osascript /Users/kazukimaeda/work/atamaplus/script/run_local_env.scpt"
@@ -18,6 +17,14 @@ alias update_local="osascript /Users/kazukimaeda/work/atamaplus/script/update_lo
 
 # Get Global IP Address
 alias gip="curl inet-ip.info"
+
+# for saml
+function _saml() {
+  saml2aws login --skip-prompt \
+  --mfa-token=$1
+}
+alias saml="_saml"
+
 
 # for Android Studio
 # export ANDROID_HOME=$HOME/Library/Android/sdk

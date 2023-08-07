@@ -4,8 +4,8 @@
   become: no
   gather_facts: no
   roles:
-    - homebrew
-    - npm
+    # - homebrew
+    # - npm
     - dotfiles
     # - homebrew_cask
     # - app_store
