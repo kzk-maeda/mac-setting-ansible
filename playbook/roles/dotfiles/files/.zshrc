@@ -9,6 +9,8 @@ alias gd="git checkout development"
 alias gp="git pull -p"
 alias gc="git checkout"
 alias gcm="git commit -m"
+alias glc="git log -1 --pretty=format:\"%H\" | pbcopy"
+alias gpn="git push --set-upstream origin $(git rev-parse --abbrev-ref HEAD)"
 alias chrome="open -a '/Applications/Google Chrome.app'"
 alias memo="code ~/work/memo/memo_`date "+%Y%m%d_%H%M%S"`.md"
 alias blog="${HOME}/work/self-project/blog/kzk-blog/bin/create_post.sh"
@@ -25,6 +27,8 @@ function _saml() {
 }
 alias saml="_saml"
 
+# for local
+export PATH="/Users/kazukimaeda/.local/bin:$PATH"
 
 # for Android Studio
 # export ANDROID_HOME=$HOME/Library/Android/sdk
@@ -47,11 +51,14 @@ export PATH=$PATH:`npm bin -g`
 
 # for go
 # export GOROOT=$(go1.18 env GOROOT)
-# export PATH=${GOROOT}/bin:${PATH}
-# export GOPATH=$HOME/go
+export GOPATH=$HOME/go
+export PATH=${GOPATH}/bin:${PATH}
 
 # for mysql
 export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
+
+# for breeze
+export PATH="/opt/homebrew/opt/gnu-getopt/bin:$PATH"
 
 # BEGIN homebrew setting
 if [ -d /opt/homebrew/bin ]; then
@@ -87,10 +94,10 @@ compinit
 
 # プロンプト（左）
 function left-prompt {
-  name_t='179m%}'      # user name text clolr
-  name_b='237m%}'    # user name background color
+  name_t='007m%}'      # user name text clolr
+  name_b='107m%}'    # user name background color
   path_t='255m%}'     # path text clolr
-  path_b='031m%}'   # path background color
+  path_b='110m%}'   # path background color
   arrow='087m%}'   # arrow color
   text_color='%{\e[38;5;'    # set text color
   back_color='%{\e[30;48;5;' # set background color
@@ -194,3 +201,39 @@ if [ -f '/Users/kazukimaeda/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/kaz
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/kazukimaeda/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/kazukimaeda/google-cloud-sdk/completion.zsh.inc'; fi
+
+export PATH=$HOME/.progate/bin:$PATH
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
+
+
+# JINA_CLI_BEGIN
+
+## autocomplete
+if [[ ! -o interactive ]]; then
+    return
+fi
+
+compctl -K _jina jina
+
+_jina() {
+  local words completions
+  read -cA words
+
+  if [ "${#words}" -eq 2 ]; then
+    completions="$(jina commands)"
+  else
+    completions="$(jina completions ${words[2,-2]})"
+  fi
+
+  reply=(${(ps:
+:)completions})
+}
+
+# session-wise fix
+ulimit -n 4096
+export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
+
+# JINA_CLI_END
+
+
